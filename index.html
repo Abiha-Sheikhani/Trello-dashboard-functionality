@@ -1,44 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!doctype html>
+  <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trello Dash board</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
-    <div class="boards-container">
-      <div class="board">
-        <div class="board-hearder">To do</div>
-        <div class="cards-list"></div>
-        <div class="add-card-button">+ Add Card</div>
-      </div>
-      <div class="board">
-        <div class="board-hearder">To do</div>
-        <div class="cards-list">
-          <div class="card">
-            <h4></h4>
+
+    <div class="main">
+
+      <div class="bigBox">
+        <header class="header">
+          <h3 class="text-white">My Trello Board </h3>
+
+        </header>
+
+
+        <div class="inneritems" id="inneritems">
+
+
+          <div class="card1" id="card1">
+            <div class="upper">
+              <h6 class="text-white" id="ulHead"></h6>
+              
+            </div>
+
+<div class="center">
+  <input class="centerInp" type="text" name=""  id="centerInp">
+  <div class="btnparent">
+  <button onclick="deleteTodo()" class="btns p-0 m-0"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z"/></svg></button>
+  <button onclick="editTodo()" class="btns p-0 m-0"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
+</div>
+</div>
+
+
+
+            <div class="lower">
+              <div class="showItems">
+                <button class="cardlist" onclick="addTodo(this)" > <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                    viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                  </svg> Add a card</button>
+
+                <button class="bg-transparent icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                    viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                    <path
+                      d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z" />
+                  </svg></button>
+              </div>
+
+
+              <div class="hiddenItems">
+                <input class="hidenInp"  type="text" placeholder="Enter a title or paste a link">
+                <div>
+                  <button class="bg-primary px-3 py-1 border-0 rounded" onclick="addCardbtn(this)">Add Card</button>
+                  <button class="px-1 py-0 border-0 bg-transparent" onclick="hideCloseIcon(this)"><svg xmlns="http://www.w3.org/2000/svg" height="18px"
+                      viewBox="0 -960 960 960" width="18px" fill="#FFFFFF">
+                      <path
+                        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg></button>
+                </div>
+              </div>
+
+            </div>
+
           </div>
+
+
+
+          <div class="addList" id="addList">
+            <span class="plus">+</span>
+            <button class="addBtn"> Add Another List </button>
+          </div>
+
+          <div class="ulDiv " id="ulDiv">
+            <input class="listName" type="text" name="" id="ulInp" placeholder="Enter List Name..."> <br>
+            <button id="ulListBtn" class="bg-primary px-3 py-1 border-0 rounded ">Add List</button> <button
+              onclick="closeBtn()" class="px-1 py-0 border-0 bg-transparent"><svg xmlns="http://www.w3.org/2000/svg"
+                height="18px" viewBox="0 -960 960 960" width="18px" fill="#FFFFFF">
+                <path
+                  d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+              </svg></button>
+          </div>
+
         </div>
-        <div class="add-card-button">+ Add Card</div>
+
+
+
+
       </div>
-      <div class="board">
-        <div class="board-hearder">In progress</div>
-        <div class="cards-list"></div>
-        <div class="add-card-button">+ Add Card</div>
-      </div>
-      <div class="board">
-        <div class="board-hearder">Preview</div>
-        <div class="cards-list"></div>
-        <div class="add-card-button">+ Add Card</div>
-      </div>
-      <div class="board">
-        <div class="board-hearder">Done</div>
-        <div class="cards-list"></div>
-        <div class="add-card-button">+ Add Card</div>
-      </div>
+
     </div>
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </body>
-</html>
+
+  </html>
